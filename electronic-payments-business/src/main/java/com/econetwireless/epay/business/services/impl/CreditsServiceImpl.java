@@ -35,10 +35,13 @@ public class CreditsServiceImpl implements CreditsService{
         LOGGER.info("Credit airtime Request : {}", airtimeTopupRequest);
         final AirtimeTopupResponse airtimeTopupResponse = new AirtimeTopupResponse();
         final SubscriberRequest subscriberRequest = populateSubscriberRequest(airtimeTopupRequest);
-        final SubscriberRequest createdSubscriberRequest = subscriberRequestDao.persist(subscriberRequest);
+       LOGGER.info("Subscriber Request Request : {}", subscriberRequest);
+        final SubscriberRequest createdSubscriberRequest = subscriberRequestDao.save(subscriberRequest);
         final INCreditResponse inCreditResponse = chargingPlatform.creditSubscriberAccount(populate(airtimeTopupRequest));
         changeSubscriberRequestStatusOnCredit(createdSubscriberRequest, inCreditResponse);
-        subscriberRequestDao.update(createdSubscriberRequest);
+       //tO UPDATE A RECORD WITH JPA USE SAVE NOT UPDATE METHOD
+         LOGGER.info("created subscriber request request : {}", subscriberRequest);
+        subscriberRequestDao.save(createdSubscriberRequest);
         airtimeTopupResponse.setResponseCode(inCreditResponse.getResponseCode());
         airtimeTopupResponse.setNarrative(inCreditResponse.getNarrative());
         airtimeTopupResponse.setMsisdn(airtimeTopupRequest.getMsisdn());

@@ -26,7 +26,10 @@ public class ChargingPlatformImpl implements ChargingPlatform{
 
     @Override
     public INCreditResponse creditSubscriberAccount(final INCreditRequest inCreditRequest) {
-        final CreditRequest creditRequest = MessageConverters.convert(inCreditRequest);
+    
+        final CreditRequest creditRequest;
+        creditRequest = MessageConverters.convert(inCreditRequest);
+        
         return MessageConverters.convert(intelligentNetworkService.creditSubscriberAccount(creditRequest));
     }
 }

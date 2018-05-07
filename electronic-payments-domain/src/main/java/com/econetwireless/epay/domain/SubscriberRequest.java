@@ -39,7 +39,10 @@ public class SubscriberRequest {
     @Version
     private long version;
 
-    @PreInsert
+   // @PreInsert
+    //Changed from pre insert to pre update
+    @PreUpdate
+    
     protected void init() {
         if(id == null) {
             id = KeyGen.getUniqueId();

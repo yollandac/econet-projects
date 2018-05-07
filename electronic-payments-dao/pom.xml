@@ -26,6 +26,26 @@
             <artifactId>electronic-payments-domain</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        
+<!--<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-envers</artifactId>
+    <version>${project.parent.version}</version>
+</dependency>-->
+
+<!--Changed the abo0ve commented dependency to the one below-->
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.3.0.CR2</version>
+</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.0.5.RELEASE</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 
 
